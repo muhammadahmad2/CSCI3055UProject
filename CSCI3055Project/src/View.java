@@ -319,6 +319,7 @@ public class View {
                         accountList.remove(i);
                     }
                 }
+                saveAccounts();
                 currentAccount = "";
                 optionsPanel.setVisible(false);
                 loginPanel.setVisible(true);
