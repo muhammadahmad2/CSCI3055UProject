@@ -152,10 +152,7 @@ public class View {
         passwordPanel.add(passwordConfirmButton);
 
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        loginButton.addActionListener(e ->{
                 boolean found = false;
                 for (int i = 0; i < accountList.size(); i++) {
                     Account a = accountList.get(i);
@@ -166,6 +163,7 @@ public class View {
                             loginPanel.setVisible(false);
                             optionsPanel.setVisible(true);
                             topLabel.setText(currentAccount);
+                            messageLabel.setText("");
                             break;
                         }
                         else {
@@ -176,17 +174,10 @@ public class View {
                 }
                 if (!found) {
                     messageLabel.setText("Account does not exist. Create new account");
-                }
-
-
-
             }
         });
 
-        createAccountButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        createAccountButton.addActionListener(e ->{
                 for (int i = 0; i < accountList.size(); i++) {
                     Account a = accountList.get(i);
                     if (usernameField.getText().equals(a.accountNumber)){
@@ -199,95 +190,69 @@ public class View {
                         loginPanel.setVisible(false);
                         optionsPanel.setVisible(true);
                         topLabel.setText(currentAccount);
+                        messageLabel.setText("");
                         break;
                     }
                 }
 
-            }
+
         });
 
-        checkBalanceButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        checkBalanceButton.addActionListener(e ->{
                 infoLabel.setText(String.valueOf(getAccountBalance(currentAccount)));
-            }
+
         });
 
-        depositButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        depositButton.addActionListener(e ->{
                 optionsPanel.setVisible(false);
                 depositPanel.setVisible(true);
-            }
+
         });
 
-        depositConfirmButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        depositConfirmButton.addActionListener(e ->{
                 setAccountBalance(currentAccount,getAccountBalance(currentAccount)+Double.parseDouble(depositAmount.getText()));
                 infoLabel.setText("Deposit confirmed: " + depositAmount.getText());
                 optionsPanel.setVisible(true);
                 depositPanel.setVisible(false);
-            }
+
         });
 
-        withdrawButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        withdrawButton.addActionListener(e ->{
                 optionsPanel.setVisible(false);
                 withdrawPanel.setVisible(true);
-            }
+
         });
 
-        withdrawConfirmButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        withdrawConfirmButton.addActionListener(e ->{
                 setAccountBalance(currentAccount,getAccountBalance(currentAccount)-Double.parseDouble(withdrawAmount.getText()));
                 infoLabel.setText("Withdrawal confirmed: " + withdrawAmount.getText());
                 optionsPanel.setVisible(true);
                 withdrawPanel.setVisible(false);
-            }
+
         });
 
-        transferFundsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        transferFundsButton.addActionListener(e ->{
                 optionsPanel.setVisible(false);
                 transferPanel.setVisible(true);
-            }
+
         });
 
-        transferConfirmButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        transferConfirmButton.addActionListener(e ->{
                 setAccountBalance(currentAccount,getAccountBalance(currentAccount)-Double.parseDouble(transferAmount.getText()));
                 setAccountBalance(transferAccount.getText(),getAccountBalance(transferAccount.getText())+Double.parseDouble(transferAmount.getText()));
                 infoLabel.setText("Withdrawal confirmed to account: " + transferAccount.getText() + " in amount: " + transferAmount.getText());
                 optionsPanel.setVisible(true);
                 transferPanel.setVisible(false);
-            }
+
         });
 
-        passwordButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        passwordButton.addActionListener(e ->{
                 optionsPanel.setVisible(false);
                 passwordPanel.setVisible(true);
-            }
+
         });
 
-        passwordConfirmButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        passwordConfirmButton.addActionListener(e ->{
                 for (int i = 0; i < accountList.size(); i++) {
                     if (accountList.get(i).accountNumber.equals(currentAccount)) {
                         if (oldPassword.getText().equals(accountList.get(i).password)) {
@@ -305,13 +270,10 @@ public class View {
                 optionsPanel.setVisible(true);
                 transferPanel.setVisible(false);
 
-            }
+
         });
 
-        deleteAccountButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        deleteAccountButton.addActionListener(e ->{
                 infoLabel.setText("Account closed. Amount: " + getAccountBalance(currentAccount));
                 setAccountBalance(currentAccount,0);
                 for (int i = 0; i < accountList.size(); i++) {
@@ -321,21 +283,19 @@ public class View {
                 }
                 saveAccounts();
                 currentAccount = "";
+                infoLabel.setText("");
                 optionsPanel.setVisible(false);
                 loginPanel.setVisible(true);
 
-            }
         });
-        logoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event)
-            {
+        logoutButton.addActionListener(e ->{
                 saveAccounts();
                 currentAccount = "";
+                infoLabel.setText("");
                 optionsPanel.setVisible(false);
                 loginPanel.setVisible(true);
 
-            }
+
         });
 
         guiFrame.setLayout(null);

@@ -22,22 +22,14 @@
       <file leaf-file-name="View.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="329" column="21" lean-forward="true" selection-start-line="329" selection-start-column="21" selection-end-line="329" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="297" column="0" lean-forward="true" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
               <folding>
-                <element signature="e#0#15401#0" expanded="true" />
+                <element signature="e#0#13949#0" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="e#492#501#0" expanded="true" />
                 <element signature="e#855#856#0" expanded="true" />
                 <element signature="e#881#882#0" expanded="true" />
-                <element signature="class#5628:6746" expanded="false" />
-                <element signature="class#6800:7689" expanded="false" />
-                <element signature="class#7742:7965" expanded="false" />
-                <element signature="class#8013:8245" expanded="false" />
-                <element signature="class#8300:8745" expanded="false" />
-                <element signature="class#8794:9027" expanded="false" />
-                <element signature="class#9083:9534" expanded="false" />
-                <element signature="class#10585:10818" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -64,6 +56,9 @@
       <find>JTextField()</find>
       <find>setCurrentAccounPassword</find>
       <find>.</find>
+      <find>addActionListener(new ActionListener() {             @Override             public void actionPerformed(ActionEvent event)             {</find>
+      <find>accountList.add(new Account()</find>
+      <find>new Account</find>
     </findStrings>
     <replaceStrings>
       <replace>accountPanel</replace>
@@ -72,6 +67,7 @@
       <replace>optionsPanel</replace>
       <replace>usernameLabel</replace>
       <replace>JTextField(20)</replace>
+      <replace>addActionListener(e -&gt;{</replace>
     </replaceStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -421,7 +417,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -443,19 +439,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#15401#0" expanded="true" />
+            <element signature="e#0#13949#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#492#501#0" expanded="true" />
             <element signature="e#855#856#0" expanded="true" />
             <element signature="e#881#882#0" expanded="true" />
-            <element signature="class#5628:6746" expanded="false" />
-            <element signature="class#6800:7689" expanded="false" />
-            <element signature="class#7742:7965" expanded="false" />
-            <element signature="class#8013:8245" expanded="false" />
-            <element signature="class#8300:8745" expanded="false" />
-            <element signature="class#8794:9027" expanded="false" />
-            <element signature="class#9083:9534" expanded="false" />
-            <element signature="class#10585:10818" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -478,22 +466,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="329" column="21" lean-forward="true" selection-start-line="329" selection-start-column="21" selection-end-line="329" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="297" column="0" lean-forward="true" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
           <folding>
-            <element signature="e#0#15401#0" expanded="true" />
+            <element signature="e#0#13949#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#492#501#0" expanded="true" />
             <element signature="e#855#856#0" expanded="true" />
             <element signature="e#881#882#0" expanded="true" />
-            <element signature="class#5628:6746" expanded="false" />
-            <element signature="class#6800:7689" expanded="false" />
-            <element signature="class#7742:7965" expanded="false" />
-            <element signature="class#8013:8245" expanded="false" />
-            <element signature="class#8300:8745" expanded="false" />
-            <element signature="class#8794:9027" expanded="false" />
-            <element signature="class#9083:9534" expanded="false" />
-            <element signature="class#10585:10818" expanded="false" />
           </folding>
         </state>
       </provider>
