@@ -1,2 +1,2 @@
-00001 hello 500.00 
-00002 password 400.00 
+00001 hello 474.0 
+00002 password 326.0 
