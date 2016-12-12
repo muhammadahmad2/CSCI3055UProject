@@ -7,10 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.List;
 
@@ -78,6 +75,7 @@ public class View {
         JButton depositButton = new JButton("Deposit");
         JButton withdrawButton = new JButton("Withdraw");
         JButton transferFundsButton = new JButton("Transfer Funds");
+        JButton passwordButton = new JButton("Change password");
         JButton deleteAccountButton = new JButton("Delete Account");
         JButton logoutButton = new JButton("Logout");
         JLabel infoLabel = new JLabel("");
@@ -97,7 +95,7 @@ public class View {
         depositPanel.setVisible(false);
 
         JLabel depositLabel = new JLabel("Deposit amount:");
-        JTextField depositAmount = new JTextField();
+        JTextField depositAmount = new JTextField(20);
         JButton depositConfirmButton = new JButton("Confirm");
 
         depositPanel.add(depositLabel);
@@ -111,7 +109,7 @@ public class View {
         withdrawPanel.setVisible(false);
 
         JLabel withdrawLabel = new JLabel("Withdrawal amount:");
-        JTextField withdrawAmount = new JTextField();
+        JTextField withdrawAmount = new JTextField(20);
         JButton withdrawConfirmButton = new JButton("Confirm");
 
         withdrawPanel.add(withdrawLabel);
@@ -119,15 +117,15 @@ public class View {
         withdrawPanel.add(withdrawConfirmButton);
 
 
-        // Tranfer Panel
+        // Transfer Panel
         final JPanel transferPanel = new JPanel();
         transferPanel.setLayout(new BoxLayout(transferPanel, BoxLayout.Y_AXIS));
         transferPanel.setVisible(false);
 
         JLabel transferAccountLabel = new JLabel("Transfer to account:");
-        JTextField transferAccount = new JTextField();
+        JTextField transferAccount = new JTextField(20);
         JLabel transferLabel = new JLabel("Transfer amount:");
-        JTextField transferAmount = new JTextField();
+        JTextField transferAmount = new JTextField(20);
         JButton transferConfirmButton = new JButton("Confirm");
 
         transferPanel.add(transferAccountLabel);
@@ -135,6 +133,23 @@ public class View {
         transferPanel.add(transferLabel);
         transferPanel.add(transferAmount);
         transferPanel.add(transferConfirmButton);
+
+        // Transfer Panel
+        final JPanel passwordPanel = new JPanel();
+        passwordPanel.setLayout(new BoxLayout(passwordPanel, BoxLayout.Y_AXIS));
+        passwordPanel.setVisible(false);
+
+        JLabel oldPasswordLabel = new JLabel("Old Password:");
+        JPasswordField oldPassword = new JPasswordField(20);
+        JLabel passwordChangeLabel = new JLabel("New Password:");
+        JPasswordField passwordChange = new JPasswordField(20);
+        JButton passwordConfirmButton = new JButton("Confirm");
+
+        passwordPanel.add(oldPasswordLabel);
+        passwordPanel.add(oldPassword);
+        passwordPanel.add(passwordChangeLabel);
+        passwordPanel.add(passwordChange);
+        passwordPanel.add(passwordConfirmButton);
 
 
         loginButton.addActionListener(new ActionListener() {
@@ -260,17 +275,61 @@ public class View {
             }
         });
 
+        passwordButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                optionsPanel.setVisible(false);
+                passwordPanel.setVisible(true);
+            }
+        });
+
+        passwordConfirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                for (int i = 0; i < accountList.size(); i++) {
+                    if (accountList.get(i).accountNumber.equals(currentAccount)) {
+                        if (oldPassword.getText().equals(accountList.get(i).password)) {
+                            setCurrentAccountPassword(passwordChange.getText());
+                            infoLabel.setText("Password changed");
+                            break;
+                        }
+                        else {
+                            infoLabel.setText("Old password incorrect;");
+                            break;
+                        }
+                    }
+                }
+
+                optionsPanel.setVisible(true);
+                transferPanel.setVisible(false);
+
+            }
+        });
+
         deleteAccountButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event)
             {
+                infoLabel.setText("Account closed. Amount: " + getAccountBalance(currentAccount));
                 setAccountBalance(currentAccount,0);
+                for (int i = 0; i < accountList.size(); i++) {
+                    if (accountList.get(i).accountNumber.equals(currentAccount)) {
+                        accountList.remove(i);
+                    }
+                }
+                currentAccount = "";
+                optionsPanel.setVisible(false);
+                loginPanel.setVisible(true);
+
             }
         });
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event)
             {
+                saveAccounts();
                 currentAccount = "";
                 optionsPanel.setVisible(false);
                 loginPanel.setVisible(true);
@@ -278,23 +337,41 @@ public class View {
             }
         });
 
+        guiFrame.setLayout(null);
+        guiFrame.add(loginPanel);
+        loginPanel.setBounds(0,0,guiFrame.getWidth(),150);
 
-        guiFrame.add(loginPanel, BorderLayout.NORTH);
-        guiFrame.add(optionsPanel, BorderLayout.CENTER);
-        guiFrame.add(depositPanel, BorderLayout.CENTER);
-        guiFrame.add(withdrawPanel, BorderLayout.CENTER);
+        guiFrame.add(optionsPanel);
+        optionsPanel.setBounds(0,0,guiFrame.getWidth(),guiFrame.getHeight());
+
+        guiFrame.add(depositPanel);
+
+        depositPanel.setBounds(0,0,guiFrame.getWidth(),100);
+        guiFrame.add(withdrawPanel);
+
+        withdrawPanel.setBounds(0,0,guiFrame.getWidth(),100);
+        guiFrame.add(transferPanel);
+
+        transferPanel.setBounds(0,0,guiFrame.getWidth(),120);
+        guiFrame.add(passwordPanel);
+        passwordPanel.setBounds(0,0,guiFrame.getWidth(),100);
 
 
         guiFrame.setVisible(true);
     }
 
     public void loadAccounts() {
-        try {
-            Scanner scanner = new Scanner(new File(FILENAME));
-            scanner.useDelimiter(" ");
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
 
-            while (scanner.hasNext()) {
-                accountList.add(new Account(scanner.next(),scanner.next(),Double.parseDouble(scanner.next())));
+            String sCurrentLine;
+
+            while ((sCurrentLine = br.readLine()) != null) {
+                Scanner scanner = new Scanner(sCurrentLine);
+                scanner.useDelimiter(" ");
+
+                while (scanner.hasNext()) {
+                    accountList.add(new Account(scanner.next(),scanner.next(),Double.parseDouble(scanner.next())));
+                }
             }
 
         } catch (IOException e) {
@@ -305,7 +382,7 @@ public class View {
 
     public double getAccountBalance (String number) {
         for (int i = 0; i < accountList.size(); i++) {
-            if (accountList.get(i).accountNumber. equals(number)) {
+            if (accountList.get(i).accountNumber.equals(number)) {
                 return accountList.get(i).amount;
             }
         }
@@ -313,16 +390,28 @@ public class View {
     }
     public void setAccountBalance (String number, double amount) {
         for (int i = 0; i < accountList.size(); i++) {
-            if (accountList.get(i).accountNumber. equals(number)) {
+            if (accountList.get(i).accountNumber.equals(number)) {
                 accountList.get(i).amount = amount;
             }
         }
     }
-    public void setCurrentAccounPassword (String password) {
+    public void setCurrentAccountPassword (String password) {
         for (int i = 0; i < accountList.size(); i++) {
-            if (accountList.get(i).accountNumber. equals(currentAccount)) {
+            if (accountList.get(i).accountNumber.equals(currentAccount)) {
                 accountList.get(i).password = password;
             }
+        }
+    }
+
+    public void saveAccounts () {
+        try{
+            PrintWriter writer = new PrintWriter(FILENAME);
+            for (int i = 0; i < accountList.size(); i++) {
+                writer.println(accountList.get(i).accountNumber + " " + accountList.get(i).password + " " + String.valueOf(accountList.get(i).amount) + " ");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
