@@ -32,11 +32,23 @@
       <file leaf-file-name="View.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-578">
-              <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="269">
+              <caret line="271" column="31" lean-forward="false" selection-start-line="271" selection-start-column="31" selection-end-line="271" selection-end-column="31" />
               <folding>
-                <element signature="e#0#2740#0" expanded="true" />
+                <element signature="e#0#11868#0" expanded="true" />
                 <element signature="imports" expanded="true" />
+                <element signature="e#581#590#0" expanded="true" />
+                <element signature="e#944#945#0" expanded="true" />
+                <element signature="e#970#971#0" expanded="true" />
+                <element signature="class#4897:6015" expanded="false" />
+                <element signature="class#6069:6958" expanded="false" />
+                <element signature="class#7011:7234" expanded="false" />
+                <element signature="class#7282:7514" expanded="false" />
+                <element signature="class#7569:8014" expanded="false" />
+                <element signature="class#8063:8296" expanded="false" />
+                <element signature="class#8352:8803" expanded="false" />
+                <element signature="e#9971#9972#0" expanded="true" />
+                <element signature="e#10038#10039#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -378,7 +390,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -415,7 +427,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -436,8 +450,20 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#2740#0" expanded="true" />
+            <element signature="e#0#11868#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#581#590#0" expanded="true" />
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="class#4897:6015" expanded="false" />
+            <element signature="class#6069:6958" expanded="false" />
+            <element signature="class#7011:7234" expanded="false" />
+            <element signature="class#7282:7514" expanded="false" />
+            <element signature="class#7569:8014" expanded="false" />
+            <element signature="class#8063:8296" expanded="false" />
+            <element signature="class#8352:8803" expanded="false" />
+            <element signature="e#9971#9972#0" expanded="true" />
+            <element signature="e#10038#10039#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -450,13 +476,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/Double.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="537" column="0" lean-forward="false" selection-start-line="537" selection-start-column="0" selection-end-line="537" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578">
-          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state relative-caret-position="269">
+          <caret line="271" column="31" lean-forward="false" selection-start-line="271" selection-start-column="31" selection-end-line="271" selection-end-column="31" />
           <folding>
-            <element signature="e#0#2740#0" expanded="true" />
+            <element signature="e#0#11868#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#581#590#0" expanded="true" />
+            <element signature="e#944#945#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="class#4897:6015" expanded="false" />
+            <element signature="class#6069:6958" expanded="false" />
+            <element signature="class#7011:7234" expanded="false" />
+            <element signature="class#7282:7514" expanded="false" />
+            <element signature="class#7569:8014" expanded="false" />
+            <element signature="class#8063:8296" expanded="false" />
+            <element signature="class#8352:8803" expanded="false" />
+            <element signature="e#9971#9972#0" expanded="true" />
+            <element signature="e#10038#10039#0" expanded="true" />
           </folding>
         </state>
       </provider>
