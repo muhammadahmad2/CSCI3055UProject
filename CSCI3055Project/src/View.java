@@ -27,9 +27,9 @@ public class View {
         final JPanel loginPanel = new JPanel();
         loginPanel.setVisible(true);
         JLabel usernameLabel = new JLabel("Account #:");
-        JTextField usernameField = new JTextField();
+        JTextField usernameField = new JTextField(20);
         JLabel passwordLabel = new JLabel("Password:");
-        JTextField passwordField = new JPasswordField();
+        JPasswordField passwordField = new JPasswordField(20);
         JLabel messageLabel = new JLabel("");
 
         JButton createAccountButton = new JButton("Create Account");
@@ -40,6 +40,7 @@ public class View {
         loginPanel.add(passwordLabel);
         loginPanel.add(passwordField);
         loginPanel.add(messageLabel);
+        loginPanel.add(createAccountButton);
         loginPanel.add(loginButton);
 
 
@@ -50,11 +51,16 @@ public class View {
         JButton checkBalanceButton = new JButton("Check Balance");
         JButton depositButton = new JButton("Deposit");
         JButton withdrawButton = new JButton("Withdraw");
-        JButton transterFundsButton = new JButton("Transfer Funds");
+        JButton transferFundsButton = new JButton("Transfer Funds");
         JButton deleteAccountButton = new JButton("Delete Account");
         JButton logoutButton = new JButton("Logout");
 
-        
+        optionsPanel.add(checkBalanceButton);
+        optionsPanel.add(depositButton);
+        optionsPanel.add(withdrawButton);
+        optionsPanel.add(transferFundsButton);
+        optionsPanel.add(deleteAccountButton);
+        optionsPanel.add(logoutButton);
 
 
 
