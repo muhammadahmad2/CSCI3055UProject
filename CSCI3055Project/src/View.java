@@ -4,7 +4,7 @@
 //Imports are listed in full to show what's being used
 //could just import javax.swing.* and java.awt.* etc..
 import javax.swing.*;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -20,14 +20,15 @@ public class View {
         JFrame guiFrame = new JFrame();
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setTitle("ATM");
-        guiFrame.setSize(600,650);
+        guiFrame.setSize(400,450);
         guiFrame.setLocationRelativeTo(null);
 
         //Login Panel
         final JPanel loginPanel = new JPanel();
+        loginPanel.setLayout(new BoxLayout(loginPanel, BoxLayout.Y_AXIS));
         loginPanel.setVisible(true);
         JLabel usernameLabel = new JLabel("Account #:");
-        JTextField usernameField = new JTextField(20);
+        JTextField usernameField = new JTextField(10);
         JLabel passwordLabel = new JLabel("Password:");
         JPasswordField passwordField = new JPasswordField(20);
         JLabel messageLabel = new JLabel("");
@@ -46,6 +47,7 @@ public class View {
 
         // Options Panel
         final JPanel optionsPanel = new JPanel();
+        optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
         optionsPanel.setVisible(false);
 
         JButton checkBalanceButton = new JButton("Check Balance");
@@ -75,9 +77,9 @@ public class View {
         });
 
 
+
         guiFrame.add(loginPanel, BorderLayout.NORTH);
         guiFrame.add(optionsPanel, BorderLayout.CENTER);
-        guiFrame.add(loginButton,BorderLayout.SOUTH);
 
         guiFrame.setVisible(true);
     }
